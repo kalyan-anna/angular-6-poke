@@ -30,4 +30,8 @@ describe('PokemonGalleryComponent', () => {
   it('should search and display pokemons with matching string', () => {
 
   });
+
+  it('should display no result if no matching pokemon found', () => {
+
+  });
 });

@@ -42,7 +42,7 @@ export class PokemonGalleryComponent implements OnInit {
     return pokemons.sort((a: Pokemon, b: Pokemon) => a.index - b.index);
   }
 
-  get pokemonList(): Pokemon[] {
+  get paginatedList(): Pokemon[] {
     const start = (this.currentPage * this.pageSize) - this.pageSize;
     const end = this.currentPage * this.pageSize;
     return this.pokemons.slice(start, end);
