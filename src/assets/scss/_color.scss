@@ -1,0 +1,17 @@
+$red: #8d0000;
+$dark-grey: #656464;
+$light-grey: #d4d4d4;
+$black: #181717;
+$white: #ffffff;
+
+$theme-colors: (
+        'primary': $red,
+        'accent': $dark-grey,
+        'secondary': $light-grey,
+        'foreground': $white,
+        'border': $black
+);
+
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}

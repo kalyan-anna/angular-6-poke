@@ -1,0 +1,16 @@
+@import 'scss/media';
+@import 'scss/card';
+
+.pokemon-thumbnail {
+  @include clickable-card;
+}
+
+.pokemon-thumbnail__text {
+  text-align: center;
+}
+
+.pokemon-thumbnail__img {
+  @include breakpoint(small) {
+    margin-right: 30px;
+  }
+}
