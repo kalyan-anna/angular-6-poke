@@ -25,11 +25,11 @@ export class PokemonGalleryComponent implements OnInit {
   }
 
   private refreshPokemons() {
-    this.isLoadingData = true;
-    this.currentPage = 1;
     if (this.pokeApiSubscription) {
       this.pokeApiSubscription.unsubscribe();
     }
+    this.isLoadingData = true;
+    this.currentPage = 1;
     this.pokeApiSubscription = this.pokeApiService.search(this.searchText)
                                             .pipe(
                                               map(pokemons => this.sortByNumber(pokemons)),
