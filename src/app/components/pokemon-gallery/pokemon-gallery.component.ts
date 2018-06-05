@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PokeApiService} from '../../';
 import {Pokemon} from '../../';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -32,9 +32,14 @@ export class PokemonGalleryComponent implements OnInit {
     }
     this.pokeApiSubscription = this.pokeApiService.search(this.searchText)
                                             .pipe(
+                                              map(pokemons => this.sortByNumber(pokemons)),
                                               finalize(() => this.isLoadingData = false)
                                             )
                                             .subscribe(pokemons => this.pokemons = pokemons);
+  }
+
+  private sortByNumber(pokemons: Pokemon[]): Pokemon[] {
+    return pokemons.sort((a: Pokemon, b: Pokemon) => a.index - b.index);
   }
 
   get pokemonList(): Pokemon[] {

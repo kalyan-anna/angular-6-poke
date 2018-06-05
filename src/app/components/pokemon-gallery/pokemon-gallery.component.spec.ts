@@ -22,4 +22,12 @@ describe('PokemonGalleryComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should sort the pokemons by number', () => {
+
+  });
+
+  it('should search and display pokemons with matching string', () => {
+
+  });
 });
