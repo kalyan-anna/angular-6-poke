@@ -5,10 +5,10 @@ import {WindowRefService} from '../../services/window-ref.service';
 
 @Component({
   selector: 'pokemon-thumbnail',
-  templateUrl: './pokemon-thumbnail.component.html',
-  styleUrls: ['./pokemon-thumbnail.component.scss']
+  templateUrl: './thumbnail.component.html',
+  styleUrls: ['./thumbnail.component.scss']
 })
-export class PokemonThumbnailComponent {
+export class ThumbnailComponent {
   @Input() pokemon: Pokemon;
 
   constructor(private window: WindowRefService) {

@@ -2,10 +2,10 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
 
 @Component({
   selector: 'pokemon-paginator',
-  templateUrl: './pokemon-paginator.component.html',
-  styleUrls: ['./pokemon-paginator.component.scss']
+  templateUrl: './paginator.component.html',
+  styleUrls: ['./paginator.component.scss']
 })
-export class PokemonPaginatorComponent implements OnChanges {
+export class PaginatorComponent implements OnChanges {
   @Input() readonly pageSize: number;
   @Input() readonly length: number;
   @Output() page = new EventEmitter<number>();

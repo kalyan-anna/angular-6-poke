@@ -6,10 +6,10 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'pokemon-gallery',
-  templateUrl: './pokemon-gallery.component.html',
-  styleUrls: ['./pokemon-gallery.component.scss']
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss']
 })
-export class PokemonGalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit {
   pokemons: Pokemon[];
   pageSize = 20;
   isLoadingData = true;
