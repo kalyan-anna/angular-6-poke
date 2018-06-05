@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {PokeApiService} from '../../services/poke-api.service';
-import {Pokemon} from '../../models/pokemon';
+import {PokeApiService} from '../../';
+import {Pokemon} from '../../';
 import { finalize } from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'pokemon-gallery',
@@ -13,26 +14,37 @@ export class PokemonGalleryComponent implements OnInit {
   pageSize = 20;
   isLoadingData = true;
   currentPage: number = 1;
+  searchText: string = '';
+  pokeApiSubscription: Subscription;
 
   constructor(private pokeApiService: PokeApiService) {
   }
 
   ngOnInit() {
-    this.loadData();
+    this.refreshPokemons();
   }
 
-  private loadData() {
+  private refreshPokemons() {
     this.isLoadingData = true;
-    this.pokeApiService.search('')
-      .pipe(
-        finalize(() => this.isLoadingData = false)
-      )
-      .subscribe(pokemons => this.pokemons = pokemons);
+    this.currentPage = 1;
+    if (this.pokeApiSubscription) {
+      this.pokeApiSubscription.unsubscribe();
+    }
+    this.pokeApiSubscription = this.pokeApiService.search(this.searchText)
+                                            .pipe(
+                                              finalize(() => this.isLoadingData = false)
+                                            )
+                                            .subscribe(pokemons => this.pokemons = pokemons);
   }
 
   get pokemonList(): Pokemon[] {
     const start = (this.currentPage * this.pageSize) - this.pageSize;
     const end = this.currentPage * this.pageSize;
     return this.pokemons.slice(start, end);
+  }
+
+  onSearch(text: string) {
+    this.searchText = text;
+    this.refreshPokemons();
   }
 }
