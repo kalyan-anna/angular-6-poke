@@ -1,0 +1,7 @@
+<div class="pokemon-paginator">
+  <div class="pokemon-paginator__count"> {{ startIndex }} - {{ endIndex }} of {{ length }}</div>
+  <div class="pokemon-paginator__buttons">
+    <button class="button-previous" [disabled]="currentPage === 1" (click)="onButtonClick('Prev')"> < </button>
+    <button class="button-next" [disabled]="isLastPage" (click)="onButtonClick('Next')"> > </button>
+  </div>
+</div>

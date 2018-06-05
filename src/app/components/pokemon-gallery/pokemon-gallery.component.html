@@ -1,3 +1,17 @@
-<div *ngFor="let pokemon of pokemons">
-  <pokemon-thumbnail [pokemon]="pokemon"></pokemon-thumbnail>
+<div class="pokemon-gallery">
+  <div class="pokemon-gallery__content" *ngIf="!isLoadingData; else loadingTemplate">
+    <div class="pokemon-gallery__paginator">
+      <pokemon-paginator [length]="pokemons.length" [pageSize]="pageSize" (page)="currentPage = $event"></pokemon-paginator>
+    </div>
+
+    <div *ngFor="let pokemon of pokemonList" class="pokemon-gallery__item">
+      <pokemon-thumbnail [pokemon]="pokemon"></pokemon-thumbnail>
+    </div>
+  </div>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="pokemon-gallery__loading">
+    Loading....
+  </div>
+</ng-template>
