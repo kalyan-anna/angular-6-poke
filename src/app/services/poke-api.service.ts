@@ -2,26 +2,30 @@ import { Injectable } from '@angular/core';
 import {Pokemon} from '../models/pokemon';
 import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokeApiService {
-
+  private cache$: Observable<Pokemon[]>;
   private apiEndpoint = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
   constructor(private http: HttpClient) { }
 
   private load(): Observable<Pokemon[]> {
-    return this.http.get(this.apiEndpoint)
-                  .pipe(
-                    map((response: any) => response.results),
-                    map(results => {
-                      let index = 0;
-                      return results.map(poke => Pokemon.fromResponse(poke, ++index))
-                    })
-                  );
+    if (!this.cache$) {
+      this.cache$ = this.http.get(this.apiEndpoint)
+                            .pipe(
+                              map((response: any) => response.results),
+                              map(results => {
+                                let index = 0;
+                                return results.map(poke => Pokemon.fromResponse(poke, ++index))
+                              }),
+                              shareReplay(1)
+                            );
+    }
+    return this.cache$;
   }
 
   public search(text: string = ''): Observable<Pokemon[]> {

@@ -1,7 +1,7 @@
 @import 'scss/media';
 @import 'scss/color';
 
-@mixin clickable-card {
+@mixin clickable-thumbnail {
   display: flex;
   flex-direction: column;
   align-items: center;

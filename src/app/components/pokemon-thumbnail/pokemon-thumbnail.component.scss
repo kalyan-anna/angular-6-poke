@@ -1,12 +1,8 @@
 @import 'scss/media';
-@import 'scss/card';
+@import 'scss/thumbnail';
 
 .pokemon-thumbnail {
-  @include clickable-card;
-}
-
-.pokemon-thumbnail__text {
-  text-align: center;
+  @include clickable-thumbnail;
 }
 
 .pokemon-thumbnail__img {
