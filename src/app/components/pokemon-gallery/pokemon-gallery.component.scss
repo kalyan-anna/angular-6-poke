@@ -1,3 +1,9 @@
+@import 'scss/color';
+
+.pokemon-gallery {
+  background-color: theme-color('secondary');
+}
+
 .pokemon-gallery__item {
   margin: 5px 0;
 }

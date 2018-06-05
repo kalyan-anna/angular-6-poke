@@ -1,0 +1,29 @@
+$base-font-size: 1rem;
+$base-line-height: 1.25 * $base-font-size;
+
+$font-settings: (
+  'small': (
+    font-size: .875rem, // 12px
+    line-height: $base-line-height
+  ),
+  'base': (
+    font-size: 1rem, // 14 px
+    line-height: $base-line-height
+  ),
+  'medium': (
+    font-size: 1.125rem, // 18px
+    line-height: $base-line-height * 2
+  ),
+  'large': (
+    font-size: 1.25rem, // 20px
+    line-height: $base-line-height * 2
+  ),
+  'extra-large': (
+    font-size: 1.5rem, // 24px
+    line-height: $base-line-height * 2
+  )
+);
+
+@function font-scale($level) {
+  @return map-get(map-get($font-settings, $level), 'font-size');
+}
