@@ -1,5 +1,5 @@
 <div class="pokemon-gallery">
-  <input type="text" placeholder="Search pokemon" #search (keyup)="onSearch(search.value)">
+  <input type="search" class="pokemon-gallery__search input-search" placeholder="Search pokemon..." #search (keyup)="onSearch(search.value)">
 
   <div class="container" *ngIf="!isLoadingData; else loadingTemplate">
     <div *ngIf="!networkError">
