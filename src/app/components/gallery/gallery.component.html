@@ -13,17 +13,17 @@
         </div>
       </div>
 
-      <div *ngIf="pokemons.length <= 0">
-        No Pokemon found for your search...
+      <div class="pokemon-gallery__no-result no-search-result" *ngIf="pokemons.length <= 0">
+        No Pokemon found for your search!
       </div>
     </div>
 
-    <div *ngIf="networkError">
+    <div class="severe-error-message" *ngIf="networkError">
        Pokeman unhappy :( <br> Unexpected network error occurred. <br> Take a break and play later!!!
     </div>
   </div>
 </div>
 
 <ng-template #loadingTemplate>
-  <div class="spinner"></div>
+  <div class="pokemon-gallery__spinner spinner"></div>
 </ng-template>

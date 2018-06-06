@@ -1,0 +1,17 @@
+@import 'scss/color';
+
+.no-search-result {
+  font-weight: 700;
+  font-size: font-scale('extra-large');
+  text-transform: uppercase;
+  word-spacing: 5px;
+}
+
+.severe-error-message {
+  font-weight: 700;
+  font-size: font-scale('extra-large');
+  text-transform: uppercase;
+  word-spacing: 5px;
+  color: $red;
+  line-height: 2;
+}
