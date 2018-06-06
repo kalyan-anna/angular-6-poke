@@ -31,7 +31,7 @@ describe('PaginatorComponent', () => {
     it('should display current range with total on pagination', () => {
 
     });
-  })
+  });
 
   xdescribe('previous', () => {
     it('should disable previous button when pagination is on first page', () => {

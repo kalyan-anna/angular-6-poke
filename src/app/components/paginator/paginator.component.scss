@@ -1,0 +1,18 @@
+.pokemon-paginator {
+  display: inline-flex;
+  margin: 20px 10px;
+}
+
+.pokemon-paginator__counter {
+  margin-top: 5px;
+  margin-right: 25px;
+  min-width: 120px;
+  font-weight: 700;
+  word-spacing: 3px;
+}
+
+.pokemon-paginator__buttons {
+  & > * {
+    margin-right: 15px;
+  }
+}
