@@ -1,0 +1,8 @@
+@import 'scss/color';
+
+html, body {
+  background-color: theme-color('secondary');
+  margin:0;
+  padding:0;
+  height:100%;
+}

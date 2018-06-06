@@ -1,13 +1,9 @@
 <div class="pokemon-gallery">
-  <div class="pokemon-gallery__search">
-    <input type="text" #search (keyup)="onSearch(search.value)">
-  </div>
+  <input type="text" #search (keyup)="onSearch(search.value)">
 
-  <div class="pokemon-gallery__content container" *ngIf="!isLoadingData; else loadingTemplate">
+  <div class="container" *ngIf="!isLoadingData; else loadingTemplate">
     <div *ngIf="pokemons.length > 0">
-      <div class="pokemon-gallery__paginator">
-        <pokemon-paginator [length]="pokemons.length" [pageSize]="pageSize" (page)="currentPage = $event"></pokemon-paginator>
-      </div>
+      <pokemon-paginator [length]="pokemons.length" [pageSize]="pageSize" (page)="currentPage = $event"></pokemon-paginator>
 
       <div class="row">
         <div *ngFor="let pokemon of paginatedList" class="pokemon-gallery__item col-12 col-sm-6 col-lg-3">
@@ -16,14 +12,14 @@
       </div>
     </div>
 
-    <div *ngIf="pokemons.length <= 0" class="pokemon-gallery__no-result">
+    <div *ngIf="pokemons.length <= 0">
         No Pokemon found for your search...
     </div>
   </div>
 </div>
 
 <ng-template #loadingTemplate>
-  <div class="pokemon-gallery__loading">
+  <div>
     Loading....
   </div>
 </ng-template>
