@@ -1,0 +1,19 @@
+@import 'scss/color';
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner {
+  content: '';
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 50%;
+  border: 10px solid $red;
+  border-top-color: $dark-grey;
+  border-right-color: $black;
+  border-bottom-color: $dark-grey;
+  animation: spinner .6s linear infinite;
+}
