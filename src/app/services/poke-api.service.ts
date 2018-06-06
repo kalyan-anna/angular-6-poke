@@ -31,14 +31,14 @@ export class PokeApiService {
   public search(text: string = ''): Observable<Pokemon[]> {
     return this.load()
               .pipe(
-                map((pokemons: Pokemon[]) => this.filter(pokemons, text))
+                map((pokemons: Pokemon[]) => this.filterPokemon(pokemons, text))
               );
   }
 
-  private filter(pokemons: Pokemon[], text: string): Pokemon[] {
+  private filterPokemon(pokemons: Pokemon[], text: string): Pokemon[] {
     if (!text) {
       return pokemons;
     }
-    return pokemons.filter(pokemon => pokemon.name.includes(text));
+    return pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(text.toLowerCase()));
   }
 }
