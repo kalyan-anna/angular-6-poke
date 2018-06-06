@@ -13,10 +13,10 @@ export class GalleryComponent implements OnInit {
   pokemons: Pokemon[];
   pageSize = 20;
   isLoadingData = true;
-  currentPage: number = 1;
-  searchText: string = '';
+  currentPage = 1;
+  searchText = '';
   pokeApiSubscription: Subscription;
-  networkError: boolean = false;
+  networkError = false;
 
   constructor(private pokeApiService: PokeApiService) {
   }
@@ -38,7 +38,7 @@ export class GalleryComponent implements OnInit {
                                               finalize(() => this.isLoadingData = false),
                                               catchError(err => {
                                                 this.networkError = true;
-                                                return throwError(err)
+                                                return throwError(err);
                                               })
                                             )
                                             .subscribe(pokemons => this.pokemons = pokemons);

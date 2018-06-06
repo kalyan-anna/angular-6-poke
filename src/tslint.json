@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "app",
+            "pokemon",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "app",
+            "pokemon",
             "kebab-case"
         ]
     }

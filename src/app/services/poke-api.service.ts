@@ -20,7 +20,7 @@ export class PokeApiService {
                               map((response: any) => response.results),
                               map(results => {
                                 let index = 0;
-                                return results.map(poke => Pokemon.fromResponse(poke, ++index))
+                                return results.map(poke => Pokemon.fromResponse(poke, ++index));
                               }),
                               shareReplay(1)
                             );

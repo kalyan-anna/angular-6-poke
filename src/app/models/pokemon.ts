@@ -4,7 +4,7 @@ export class Pokemon {
   index: number;
 
   static fromResponse(json: any, index: number): Pokemon {
-    let pokemon = new Pokemon();
+    const pokemon = new Pokemon();
     pokemon.url = json.url;
     pokemon.name = json.name;
     pokemon.index = index;
