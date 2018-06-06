@@ -2,18 +2,24 @@
   <input type="text" #search (keyup)="onSearch(search.value)">
 
   <div class="container" *ngIf="!isLoadingData; else loadingTemplate">
-    <div *ngIf="pokemons.length > 0">
-      <pokemon-paginator [length]="pokemons.length" [pageSize]="pageSize" (page)="currentPage = $event"></pokemon-paginator>
+    <div *ngIf="!networkError">
+      <div *ngIf="pokemons.length > 0">
+        <pokemon-paginator [length]="pokemons.length" [pageSize]="pageSize" (page)="currentPage = $event"></pokemon-paginator>
 
-      <div class="row">
-        <div *ngFor="let pokemon of paginatedList" class="pokemon-gallery__item col-12 col-sm-6 col-lg-3">
-          <pokemon-thumbnail [pokemon]="pokemon"></pokemon-thumbnail>
+        <div class="row">
+          <div *ngFor="let pokemon of paginatedList" class="pokemon-gallery__item col-12 col-sm-6 col-lg-3">
+            <pokemon-thumbnail [pokemon]="pokemon"></pokemon-thumbnail>
+          </div>
         </div>
+      </div>
+
+      <div *ngIf="pokemons.length <= 0">
+        No Pokemon found for your search...
       </div>
     </div>
 
-    <div *ngIf="pokemons.length <= 0">
-        No Pokemon found for your search...
+    <div *ngIf="networkError">
+       Pokeman unhappy :( <br> Unexpected network error occurred. <br> Take a break and play later!!!
     </div>
   </div>
 </div>

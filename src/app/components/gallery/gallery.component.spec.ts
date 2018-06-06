@@ -34,4 +34,8 @@ describe('GalleryComponent', () => {
   it('should display no result if no matching pokemon found', () => {
 
   });
+
+  it('shoudl display unexpected network error when API fails to load', () => {
+
+  });
 });

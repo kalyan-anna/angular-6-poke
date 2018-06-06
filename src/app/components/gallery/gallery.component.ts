@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PokeApiService} from '../../';
 import {Pokemon} from '../../';
-import { finalize, map } from 'rxjs/operators';
-import {Subscription} from 'rxjs';
+import { finalize, map, catchError } from 'rxjs/operators';
+import {Subscription, throwError} from 'rxjs';
 
 @Component({
   selector: 'pokemon-gallery',
@@ -16,6 +16,7 @@ export class GalleryComponent implements OnInit {
   currentPage: number = 1;
   searchText: string = '';
   pokeApiSubscription: Subscription;
+  networkError: boolean = false;
 
   constructor(private pokeApiService: PokeApiService) {
   }
@@ -30,10 +31,15 @@ export class GalleryComponent implements OnInit {
     }
     this.isLoadingData = true;
     this.currentPage = 1;
+    this.networkError = false;
     this.pokeApiSubscription = this.pokeApiService.search(this.searchText)
                                             .pipe(
                                               map(pokemons => this.sortByNumber(pokemons)),
-                                              finalize(() => this.isLoadingData = false)
+                                              finalize(() => this.isLoadingData = false),
+                                              catchError(err => {
+                                                this.networkError = true;
+                                                return throwError(err)
+                                              })
                                             )
                                             .subscribe(pokemons => this.pokemons = pokemons);
   }
