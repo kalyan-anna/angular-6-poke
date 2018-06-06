@@ -20,10 +20,6 @@
     border: none;
   }
 
-  &:focus {
-    outline:0;
-  }
-
   &:disabled {
     background: lighten(theme-color('primary'), 40);
     box-shadow: 0 4px lighten(theme-color('primary'), 20);
