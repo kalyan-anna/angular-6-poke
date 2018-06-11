@@ -1,13 +1,13 @@
 <div class="pokemon-gallery">
   <input type="search" class="pokemon-gallery__search input-search" placeholder="Search pokemon..." #search (keyup)="onSearch(search.value)">
 
-  <div class="container" *ngIf="!isLoadingData; else loadingTemplate">
-    <div *ngIf="!networkError">
+  <div class="container" *ngIf="(pokemon$ | async) as pokemons; else loadingTemplate">
+    <div *ngIf="!networkError; else networkErrorTemplate">
       <div *ngIf="pokemons.length > 0">
         <pokemon-paginator [length]="pokemons.length" [pageSize]="pageSize" (page)="currentPage = $event"></pokemon-paginator>
 
         <div class="row">
-          <div *ngFor="let pokemon of paginatedList" class="pokemon-gallery__item col-12 col-sm-6 col-lg-3">
+          <div *ngFor="let pokemon of paginatedList(pokemons)" class="pokemon-gallery__item col-12 col-sm-6 col-lg-3">
             <pokemon-thumbnail [pokemon]="pokemon"></pokemon-thumbnail>
           </div>
         </div>
@@ -17,13 +17,15 @@
         No Pokemon found for your search!
       </div>
     </div>
-
-    <div class="severe-error-message" *ngIf="networkError">
-       Pokeman unhappy :( <br> Unexpected network error occurred. <br> Take a break and play later!!!
-    </div>
   </div>
 </div>
 
 <ng-template #loadingTemplate>
   <div class="pokemon-gallery__spinner spinner"></div>
+</ng-template>
+
+<ng-template #networkErrorTemplate>
+  <div class="severe-error-message">
+    Pokemon unhappy :( <br> Unexpected network error occurred. <br> Take a break and play later!!!
+  </div>
 </ng-template>
