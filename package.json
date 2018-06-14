@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:prod": "ng serve --aot --vendor-chunk --prod",
     "build": "ng build --aot --build-optimizer --vendor-chunk --prod --stats-json",
-    "test": "yarn link && ng test",
+    "test": "yarn lint && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "bundle-analyzer": "yarn build && webpack-bundle-analyzer dist/$npm_package_name/stats.json"

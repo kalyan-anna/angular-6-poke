@@ -17,7 +17,7 @@ export class PaginatorComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.currentPage = 1;
-    this.calculateCurrentIndex();
+    this.calculateIndex();
   }
 
   onButtonClick(type: string) {
@@ -27,10 +27,10 @@ export class PaginatorComponent implements OnChanges {
       this.currentPage++;
     }
     this.page.emit(this.currentPage);
-    this.calculateCurrentIndex();
+    this.calculateIndex();
   }
 
-  private calculateCurrentIndex() {
+  private calculateIndex() {
     this.startIndex = (this.currentPage * this.pageSize) - ( this.pageSize - 1);
     this.endIndex = this.currentPage * this.pageSize;
     if (this.endIndex > this.length) {
